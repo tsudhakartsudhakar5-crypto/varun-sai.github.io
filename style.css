@@ -1,1 +1,110 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2eee5;color:#151515;font-family:"DM Sans",Arial,sans-serif;line-height:1.7}a{text-decoration:none;color:inherit}.header{height:74px;position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;background:rgba(14,14,14,.94);backdrop-filter:blur(12px);color:#fff}.logo{font-size:14px;font-weight:700;letter-spacing:.2em}.logo span{color:#c8a45f}.header nav{display:flex;gap:30px;text-transform:uppercase;font-size:11px;letter-spacing:.12em}.header nav a:hover{color:#c8a45f}.menu{display:none;background:none;border:0;color:#fff;font-size:26px}.hero{min-height:100vh;padding:130px 9vw 70px;position:relative;background:#141414;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 72% 50%,#3a3021 0,#1a1a1a 24%,#141414 58%);opacity:.8}.hero-copy,.hero-cover{position:relative;z-index:2}.kicker{font-size:11px;font-weight:700;letter-spacing:.27em;color:#c8a45f;margin:0 0 18px}.hero h1{font:600 clamp(65px,9.5vw,135px)/.78 "Playfair Display",Georgia,serif;letter-spacing:-.06em;margin:0}.hero h1 em{color:#c8a45f;font-style:normal}.tagline{font:500 25px "Playfair Display",Georgia,serif;margin:38px 0 10px}.tagline strong{color:#c8a45f}.intro{max-width:520px;color:#c4c4c4}.actions{display:flex;gap:13px;margin-top:30px}.gold-btn,.line-btn{padding:13px 22px;border:1px solid #c8a45f;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.12em}.gold-btn{background:#c8a45f;color:#111}.line-btn{color:#fff;border-color:#777}.hero-cover{justify-self:center;width:min(330px,72%);transform:rotate(2.5deg);filter:drop-shadow(25px 30px 28px rgba(0,0,0,.55))}.hero-cover img,.book-image img{display:block;width:100%;height:auto}.scroll{position:absolute;bottom:25px;left:9vw;font-size:9px;letter-spacing:.25em;color:#777}.section{max-width:1180px;margin:auto;padding:120px 6vw}.book{display:grid;grid-template-columns:350px 1fr;gap:100px;align-items:center}.book-image{width:min(350px,100%);box-shadow:20px 25px 50px #0003}.copy h2,.author h2,.buy h2,.contact h2,.question h2,.center-heading h2{font:600 clamp(38px,5vw,62px)/1.06 "Playfair Display",Georgia,serif;margin:0 0 25px}.copy p{max-width:650px}.facts{display:flex;gap:1px;margin-top:35px}.facts div{background:#e1dbcf;padding:17px 22px;min-width:105px}.facts b{display:block;font:600 27px "Playfair Display",serif}.facts span{font-size:9px;letter-spacing:.15em;color:#716b60}.dark{background:#151515;color:#fff}.dark.section{max-width:none}.center-heading{max-width:1180px;margin:auto;padding:0 6vw}.steps{max-width:1180px;margin:65px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#444}.steps article{background:#151515;padding:27px 20px;min-height:175px}.steps span{font-size:10px;letter-spacing:.2em;color:#c8a45f}.steps h3{font:600 23px "Playfair Display",serif;margin:14px 0 5px}.steps p{font-size:13px;color:#aaa;margin:0}.question{text-align:center;padding:135px 7vw;background:#e4dccf}.question-mark{font:100px/0 "Playfair Display",serif;color:#c8a45f;height:40px}.question h2{margin-bottom:20px}.question h2 em{color:#9b793f}.question p{max-width:650px;margin:0 auto 22px}.question strong{font:600 20px "Playfair Display",serif}.author{display:grid;grid-template-columns:1fr 360px;gap:100px;align-items:center}.author-copy p{max-width:680px}.location{font-size:10px!important;letter-spacing:.25em;color:#8c7040;font-weight:700;margin-top:28px}.author-art{aspect-ratio:1;background:#171717;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column}.author-art span{font:600 120px "Playfair Display",serif;color:#c8a45f}.author-art small{font-size:10px;letter-spacing:.25em;text-align:center;color:#aaa}.buy{padding:110px 7vw;text-align:center}.buy-inner{max-width:800px;margin:auto}.buy p{color:#bbb}.large{display:inline-block;margin:18px 0 35px}.amazon{border:1px solid #3c3c3c;max-width:460px;margin:auto;padding:22px;display:flex;flex-direction:column;gap:4px}.amazon span{font-size:10px;letter-spacing:.2em;color:#c8a45f}.amazon b{font:500 23px "Playfair Display",serif}.amazon small{color:#777}.contact{max-width:850px}.contact-note{border-left:3px solid #c8a45f;padding:14px 22px;background:#e6dfd3;margin-top:30px}footer{background:#0d0d0d;color:#777;padding:30px 6vw;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.08em}footer b{color:#ddd;margin-right:20px}footer p{margin:0}@media(max-width:850px){.header nav{display:none}.menu{display:block}.header nav.open{display:flex;position:absolute;top:74px;left:0;right:0;background:#111;flex-direction:column;padding:22px 6vw;gap:18px}.hero{grid-template-columns:1fr;padding-top:125px}.hero-cover{width:240px;margin:60px auto 20px}.book,.author{grid-template-columns:1fr;gap:55px}.steps{grid-template-columns:repeat(2,1fr)}footer{flex-direction:column;gap:10px}}@media(max-width:480px){.hero h1{font-size:65px}.hero{padding-left:7vw;padding-right:7vw}.section{padding:85px 7vw}.steps{grid-template-columns:1fr}.facts{flex-wrap:wrap}.facts div{flex:1;min-width:90px}.actions{flex-direction:column}.gold-btn,.line-btn{text-align:center}footer{padding-left:7vw}}
+/* =========================================
+   VERSION 3 — PREMIUM MOTION
+   ========================================= */
+
+/* Smooth section reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Premium book-cover interaction */
+.book-image,
+.hero-cover {
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.book-image:hover {
+  transform: translateY(-8px) rotate(-1deg) scale(1.025);
+  box-shadow:
+    24px 32px 60px rgba(0, 0, 0, 0.28);
+}
+
+.hero-cover:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.025);
+  filter:
+    drop-shadow(28px 35px 32px rgba(0, 0, 0, 0.6));
+}
+
+/* Button movement */
+.gold-btn,
+.line-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.gold-btn:hover,
+.line-btn:hover {
+  transform: translateY(-2px);
+}
+
+.gold-btn:hover {
+  box-shadow: 0 10px 25px rgba(200, 164, 95, 0.22);
+}
+
+/* Journey cards */
+.steps article {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.steps article:hover {
+  transform: translateY(-5px);
+  background: #1c1c1c;
+}
+
+/* Navigation links */
+.header nav a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 1px;
+  background: #c8a45f;
+  transition: width 0.25s ease;
+}
+
+.header nav a:hover::after {
+  width: 100%;
+}
+
+/* Keep touch devices clean */
+@media (hover: none) {
+  .book-image:hover,
+  .hero-cover:hover,
+  .steps article:hover,
+  .gold-btn:hover,
+  .line-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
