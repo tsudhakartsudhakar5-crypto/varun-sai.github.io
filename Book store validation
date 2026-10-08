@@ -1,0 +1,32 @@
+name: Bookstore validation
+
+on:
+  push:
+    branches:
+      - feature/book-store
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+- uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+- name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check store-config.js
+          node --check tests/site.test.mjs
+
+- name: Run bookstore tests
+        run: node --test tests/site.test.mjs
