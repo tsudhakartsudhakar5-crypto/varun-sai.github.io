@@ -1,16 +1,17 @@
-// Supports both the original author-page navigation and upgraded navigation.
+// Supports both original and upgraded navigation. No payment secrets here.
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.querySelector('.menu-toggle, .menu');
   const nav = document.querySelector('.nav-links, .header nav');
   if (menu && nav) {
     const close = () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); };
+    nav.setAttribute('data-enhanced', 'true');
     menu.setAttribute('aria-expanded', 'false');
     menu.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       menu.setAttribute('aria-expanded', String(open));
     });
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') { close(); menu.focus(); } });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav.classList.contains('open')) { close(); menu.focus(); } });
   }
   document.querySelectorAll('[data-year], #year').forEach(node => { node.textContent = String(new Date().getFullYear()); });
   const config = window.BOOK_STORE || {};
@@ -39,5 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const product = Object.prototype.hasOwnProperty.call(config, kind) ? config[kind] : {};
     node.textContent = typeof product.price === 'string' && product.price.trim() ? product.price : 'Price announced at launch';
   });
-  // Content remains visible without JavaScript; motion is deliberately minimal.
+  // Content stays visible without JavaScript; no scroll-reveal dependency.
 });
