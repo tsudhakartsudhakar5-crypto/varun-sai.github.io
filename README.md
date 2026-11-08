@@ -2,23 +2,18 @@
 
 Static GitHub Pages site for author Varun Sai. Separate from VARUN SAI BOOKSTORE.
 
-## Status: Phase 4 complete (SEO). Phases 1–3 in place.
-No backend is connected yet. Thoughts, Reader's Corner and Contact (form) show honest "opening soon" states.
+## FLAT STRUCTURE — NO FOLDERS
+Every page has its own unique file name, so all files can be uploaded together to the top level of the repository
+(GitHub's web upload loses folders and overwrites files that share a name).
 
-## Pages (clean URLs)
-/ · /about/ · /journey/ · /books/ · /books/the-time-changes/ · /books/learn-it-build-it-master-it/ ·
-/books/the-unknown-truth/ (upcoming) · /thoughts/ · /readers-corner/ · /achievements/ · /media/ · /contact/ · /the-unknown-signal/ · 404.html
-Old URLs about.html, book.html, unknown-signal.html redirect to the new pages.
+## Files (25) — all go in the repository's main folder
+Pages: index.html, about.html, journey.html, books.html, book.html (The Time Changes), learn-it-build-it-master-it.html,
+the-unknown-truth.html, thoughts.html, readers-corner.html, achievements.html, media.html, contact.html, unknown-signal.html, 404.html
+Assets: style.css, script.js, favicon.svg, book-cover.png, learn-it-build-it-master-it-cover.jpg, the-unknown-truth-cover.jpg, The_Unknown_Signal.pdf
+Other: sitemap.xml, robots.txt, googled3fd27eadf9718ae.html (Google verification), README.md
+
+Safe to delete from the repo afterwards: the old file named "script .js" (with a space) and any leftover folders from earlier uploads.
 
 ## SEO
-Unique titles and descriptions, canonical URLs, Open Graph and Twitter cards (book pages use their covers), JSON-LD (WebSite, Person, ProfilePage, Book, BreadcrumbList), sitemap.xml, robots.txt.
-Note: robots.txt only works at a domain root. On the current project-site address (…github.io/varun-sai.github.io/) search engines ignore it; submit sitemap.xml in Google Search Console instead.
-
-## To confirm / supply
-- Real favicon (favicon.svg is a placeholder), approved author photo, social links
-- Cover for the published Time Changes in higher quality, if available
-- Publication details for The Unknown Truth when ready
-- Verify retailer links by clicking each once after deploying
-
-## Next
-Phase 5 separate Supabase backend, Phase 6 admin and interactive features, Phase 7 newsletter (only if free and secure), Phase 8 final QA.
+Unique titles/descriptions, canonical URLs, Open Graph/Twitter cards, JSON-LD, sitemap.xml, robots.txt.
+robots.txt is only honoured at a domain root; submit sitemap.xml in Google Search Console.
