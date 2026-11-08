@@ -2,23 +2,23 @@
 
 Static GitHub Pages site for author Varun Sai. Separate from VARUN SAI BOOKSTORE.
 
-## Status: Phase 2 complete (design and page structure)
-No backend is connected yet. Thoughts, Reader's Corner and Contact show honest "opening soon" states (no fake data, no dead buttons).
+## Status: Phase 4 complete (SEO). Phases 1–3 in place.
+No backend is connected yet. Thoughts, Reader's Corner and Contact (form) show honest "opening soon" states.
 
-## Structure (clean URLs)
+## Pages (clean URLs)
 / · /about/ · /journey/ · /books/ · /books/the-time-changes/ · /books/learn-it-build-it-master-it/ ·
-/thoughts/ · /readers-corner/ · /achievements/ · /media/ · /contact/ · /the-unknown-signal/ · 404.html
+/books/the-unknown-truth/ (upcoming) · /thoughts/ · /readers-corner/ · /achievements/ · /media/ · /contact/ · /the-unknown-signal/ · 404.html
+Old URLs about.html, book.html, unknown-signal.html redirect to the new pages.
 
-Old URLs about.html, book.html and unknown-signal.html redirect to the new pages.
-
-## Deploy note
-Upload everything, keeping the folders. Delete nothing else except the old files being replaced.
+## SEO
+Unique titles and descriptions, canonical URLs, Open Graph and Twitter cards (book pages use their covers), JSON-LD (WebSite, Person, ProfilePage, Book, BreadcrumbList), sitemap.xml, robots.txt.
+Note: robots.txt only works at a domain root. On the current project-site address (…github.io/varun-sai.github.io/) search engines ignore it; submit sitemap.xml in Google Search Console instead.
 
 ## To confirm / supply
-- Real favicon (favicon.svg is a placeholder), approved author photo, covers for the other books
-- Public contact email, social links
-- Details and status for The Unknown Life and The Unknown Truth — Part 2
-- Verify Amazon, Google Books and Pothi links; status of Learn It. Build It. Master It.
+- Real favicon (favicon.svg is a placeholder), approved author photo, social links
+- Cover for the published Time Changes in higher quality, if available
+- Publication details for The Unknown Truth when ready
+- Verify retailer links by clicking each once after deploying
 
 ## Next
-Phase 3 books portfolio detail, Phase 4 SEO, Phase 5 separate Supabase backend, Phase 6 admin and interactive features.
+Phase 5 separate Supabase backend, Phase 6 admin and interactive features, Phase 7 newsletter (only if free and secure), Phase 8 final QA.

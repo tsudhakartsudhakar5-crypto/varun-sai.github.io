@@ -152,3 +152,7 @@ blockquote,.question{font-family:var(--serif);font-size:1.3rem;font-style:italic
   *{transition:none!important}
   .hero-cover{transform:none}
 }
+
+/* Phase 3b: wide cover artwork */
+.cover-wide{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:14px;box-shadow:10px 14px 28px rgba(0,0,0,.45)}
+.wide-feature{width:100%;max-width:900px;height:auto;margin:0 auto 44px;box-shadow:0 20px 50px rgba(0,0,0,.55)}
