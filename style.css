@@ -241,3 +241,47 @@ details.admin-card summary{cursor:pointer;font-weight:700}
 @media(max-width:600px){.prevnext{grid-template-columns:1fr}.prevnext .next{text-align:left}.admin-list li .btn-row{width:100%}}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 [hidden]{display:none!important}
+/* ===== VARUN SAI AUTHOR BANNER ===== */
+
+.author-hero-image {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.author-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== WEBSITE BACKGROUND ===== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #292319 0%,
+            #1b1a18 35%,
+            #161616 75%
+        );
+    background-attachment: fixed;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+    .author-hero-image {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .author-banner {
+        border-radius: 9px;
+    }
+  }
