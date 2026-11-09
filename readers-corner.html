@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tsudhakartsudhakar5-crypto.github.io/varun-sai.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Reader's Corner", "item": "https://tsudhakartsudhakar5-crypto.github.io/varun-sai.github.io/readers-corner.html"}]}</script>
 </head>
-<body>
+<body data-page="readers">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header">
   <a href="index.html" class="logo">VARUN SAI</a>
@@ -45,17 +45,37 @@
 </header>
 <main id="main">
 <div class="page-head"><p class="eyebrow">Reader's Corner</p><h1>Your Voice</h1><hr class="rule"><p class="lead">A place for readers to take part: polls, questions and ideas.</p></div>
-<section class="section narrow reveal" style="padding-top:30px">
-  <div class="empty"><strong>No poll is open right now</strong>Reader polls are being set up. When one opens, you will be able to vote here and see the results, with the closing date shown. Past polls will stay available.</div>
+<section class="section narrow reveal" style="padding-top:20px">
+  <p class="eyebrow">Polls</p>
+  <div id="polls-open"><p class="muted">Loading…</p></div><noscript><p class="notice">This page needs JavaScript to load its content.</p></noscript>
+  <h2 id="closed-head" hidden style="margin-top:1.6em">Closed polls</h2>
+  <div id="polls-closed"></div>
+  <p class="muted" style="margin-top:24px"><small>Voting is limited to one vote per browser per poll. Votes are stored anonymously; no personal details are collected.</small></p>
 </section>
+<section class="band"><div class="inner narrow">
+  <p class="eyebrow">Share your thoughts</p><h2>Reader feedback</h2>
+  <p class="muted">Tell me what a book, article or poll made you think. Your message appears here only after it has been reviewed, and your email is never shown.</p>
+  <h3 id="wall-head" hidden>What readers say</h3><div id="feedback-wall"></div>
+  <form id="feedback-form" class="form-card" novalidate>
+    <label class="fld"><span>Your name</span><input name="name" type="text" maxlength="80" autocomplete="name" required></label>
+    <label class="fld"><span>Email (optional, kept private)</span><input name="email" type="email" maxlength="200" autocomplete="email"></label>
+    <label class="fld"><span>Your message</span><textarea name="message" rows="5" maxlength="2000" required></textarea></label>
+    <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn primary" type="submit">Send feedback</button>
+  </form>
+  <div id="feedback-msg" aria-live="polite"></div>
+</div></section>
 </main>
 <footer class="footer">
   <div class="inner">
     <div><div class="brand">VARUN SAI</div><p>Quality defeats quantity.</p></div>
-    <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
+    <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="quotes.html">Quotes</a></li><li><a href="announcements.html">Announcements</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
   </div>
   <p class="copy">&copy; <span class="year">2026</span> Varun Sai. All rights reserved.</p>
 </footer>
 <script src="script.js"></script>
+<script src="config.js"></script>
+<script src="site.js"></script>
+
 </body>
 </html>

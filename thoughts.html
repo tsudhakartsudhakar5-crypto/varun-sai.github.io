@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tsudhakartsudhakar5-crypto.github.io/varun-sai.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Thoughts", "item": "https://tsudhakartsudhakar5-crypto.github.io/varun-sai.github.io/thoughts.html"}]}</script>
 </head>
-<body>
+<body data-page="thoughts">
 <a class="skip" href="#main">Skip to content</a>
 <header class="header">
   <a href="index.html" class="logo">VARUN SAI</a>
@@ -45,19 +45,24 @@
 </header>
 <main id="main">
 <div class="page-head"><p class="eyebrow">Thoughts</p><h1>The Author's Journal</h1><hr class="rule"><p class="lead">Short essays and reflections on the ideas behind the writing.</p></div>
-<section class="section narrow reveal" style="padding-top:30px">
-  <div class="empty"><strong>The journal is opening soon</strong>No articles have been published yet. Search, categories and individual article pages will appear here with the first article.</div>
-  <h3 style="margin-top:36px">Planned topics</h3>
-  <ul class="chips"><li>Philosophy</li><li>Self-awareness</li><li>Discipline</li><li>Personal growth</li><li>Learning</li><li>Creativity</li><li>Writing journey</li><li>Technology</li></ul>
+<section class="section reveal" style="padding-top:20px">
+  <label class="sr-only" for="article-search">Search articles</label>
+  <input id="article-search" class="search" type="search" placeholder="Search articles…" autocomplete="off">
+  <div id="cat-chips" class="chips-row" role="group" aria-label="Filter by category"></div>
+  <div id="article-list" class="cards"><p class="muted">Loading…</p></div><noscript><p class="notice">This page needs JavaScript to load its content.</p></noscript>
+  <p style="margin-top:36px"><a class="text-link" href="quotes.html">Read original quotes →</a></p>
 </section>
 </main>
 <footer class="footer">
   <div class="inner">
     <div><div class="brand">VARUN SAI</div><p>Quality defeats quantity.</p></div>
-    <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
+    <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="quotes.html">Quotes</a></li><li><a href="announcements.html">Announcements</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
   </div>
   <p class="copy">&copy; <span class="year">2026</span> Varun Sai. All rights reserved.</p>
 </footer>
 <script src="script.js"></script>
+<script src="config.js"></script>
+<script src="site.js"></script>
+
 </body>
 </html>
