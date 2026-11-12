@@ -353,7 +353,7 @@ initializeHero3D();
   }
 
   // Automatic copyright year
-  const yearElement = document.getElementById("year");
+ const yearElement = document.querySelector(".year"); 
 
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
