@@ -285,3 +285,126 @@ body {
         border-radius: 9px;
     }
   }
+/* =====================================
+   VARUN SAI — CINEMATIC 3D EXPERIENCE
+   PHASE 1: THE TIME DIMENSION
+===================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-visual {
+    position: relative;
+    width: min(100%, 440px);
+    aspect-ratio: 1 / 1.15;
+    justify-self: center;
+    isolation: isolate;
+}
+
+#hero-3d {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 75%;
+    aspect-ratio: 1;
+    top: 12%;
+    left: 12%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(200,164,95,.13),
+        rgba(200,164,95,.025) 55%,
+        transparent 75%
+    );
+    filter: blur(25px);
+    z-index: 0;
+}
+
+.hero-visual .hero-cover {
+    position: absolute;
+    z-index: 3;
+    width: min(43%, 175px);
+    right: 0;
+    bottom: 5%;
+    transform: rotate(5deg);
+    filter: drop-shadow(12px 18px 20px rgba(0,0,0,.65));
+    transition: transform .5s ease;
+}
+
+.hero-visual .hero-cover:hover {
+    transform: rotate(0deg) translateY(-10px);
+}
+
+/* Cinematic typography */
+
+.hero h1 {
+    letter-spacing: -.035em;
+    animation: titleEntrance 1.2s ease both;
+}
+
+.hero .eyebrow {
+    animation: titleEntrance 1s ease both;
+}
+
+.hero-quote {
+    animation: titleEntrance 1.5s ease both;
+}
+
+@keyframes titleEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium button interaction */
+
+.btn {
+    transform: translateY(0);
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+@media (hover:hover) {
+    .btn:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:900px) {
+    .hero-visual {
+        width: min(100%, 380px);
+        order: -1;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .hero h1,
+    .hero .eyebrow,
+    .hero-quote {
+        animation: none;
+    }
+
+    .hero-visual .hero-cover {
+        transform: none;
+    }
+}
