@@ -1,0 +1,26 @@
+VARUN SAI — CINEMATIC 3D AUTHOR HERO
+
+This package contains the complete author website with the new homepage hero integrated.
+
+WHAT CHANGED
+- Replaced the flat homepage hero image with a responsive cinematic author introduction.
+- Added a CSS 3D paperback model using the supplied original front-cover artwork.
+- Added realistic-looking cream page edges, spine, thickness, floating movement and pointer tilt.
+- Added a Three.js hourglass scene and subtle gold particles behind the book.
+- Added a lightweight 2D particle fallback if WebGL or the Three.js CDN is unavailable.
+- Kept the rest of the website pages, navigation, existing assets, configuration and site scripts.
+- No paid service or Spline account is required for this implementation.
+
+UPLOAD
+1. Download and extract this ZIP.
+2. Open the extracted folder named varun-sai.github.io-main.
+3. Upload the CONTENTS of that folder to the root of your existing GitHub repository:
+   tsudhakartsudhakar5-crypto/varun-sai.github.io
+4. Preserve the folder structure, especially assets/the-time-changes-front.jpg.
+5. Commit the changes and wait for GitHub Pages to deploy.
+
+IMPORTANT
+- The 3D hourglass uses Three.js from jsDelivr, so the first WebGL scene requires an internet connection.
+- The CSS 3D book and its cover remain visible even if the 3D library cannot load.
+- Test on mobile and desktop after publishing. Do not delete existing config.js or site.js.
+- This package is a replacement of the latest supplied author-site ZIP, not the bookstore.

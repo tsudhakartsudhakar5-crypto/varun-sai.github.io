@@ -45,29 +45,41 @@
   </nav>
 </header>
 <main id="main">
-<section class="hero">
-  <div>
-    <p class="eyebrow">Official Author Website</p>
-    <h1>Varun Sai</h1>
-    <p class="hero-sub">Author &middot; Young writer</p>
-    <p class="hero-quote">Quality defeats quantity.</p>
-    <p class="hero-text">Writing about self-awareness, discipline, learning and creativity &mdash; for readers who want to understand themselves before trying to change the world.</p>
-    <div class="btn-row">
-      <a href="journey.html" class="btn primary">Explore My Journey</a>
-      <a href="books.html" class="btn secondary">Explore My Books</a>
+<section class="hero hero-cinematic" id="home-hero" aria-label="Varun Sai author introduction">
+  <div class="hero-copy">
+    <p class="eyebrow hero-eyebrow"><span aria-hidden="true"></span> Official Author Website</p>
+    <h1 class="cinematic-name"><span>VARUN</span><span>SAI<span class="name-period">.</span></span></h1>
+    <p class="cinematic-role">AUTHOR <i></i> THINKER <i></i> CREATOR</p>
+    <div class="cinematic-rule" aria-hidden="true"></div>
+    <p class="cinematic-label">FEATURED BOOK</p>
+    <h2 class="cinematic-book-title">THE TIME<br>CHANGES</h2>
+    <p class="cinematic-tagline">TIME MOVES. LIFE CHANGES. YOU DECIDE.</p>
+    <p class="cinematic-intro">A journey from awareness to transformation.</p>
+    <div class="btn-row cinematic-actions">
+      <a href="book.html" class="btn primary">Discover the Book</a>
+      <a href="journey.html" class="btn secondary">Explore My Journey</a>
     </div>
   </div>
-  <div class="hero-visual">
-    <canvas id="hero-3d" aria-label="Animated three-dimensional golden hourglass"></canvas>
-
-    <img
-        class="hero-cover"
-        src="book-cover.png"
-        width="792"
-        height="1224"
-        alt="The Time Changes book cover by Varun Sai"
-    >
-  </div> 
+  <div class="cinematic-stage" aria-label="Three-dimensional book and hourglass showcase">
+    <canvas id="hero-3d" aria-hidden="true"></canvas>
+    <div class="stage-halo" aria-hidden="true"></div>
+    <div class="book-shadow" aria-hidden="true"></div>
+    <div class="book-float" id="bookFloat">
+      <div class="showcase-book" id="bookModel" role="img" aria-label="Three-dimensional paperback edition of The Time Changes by Varun Sai">
+        <div class="showcase-pages" aria-hidden="true"></div>
+        <div class="showcase-back" aria-hidden="true"></div>
+        <div class="showcase-front"><img src="assets/the-time-changes-front.jpg" alt="Original front cover of The Time Changes by Varun Sai" width="680" height="1000"></div>
+        <div class="showcase-spine"><span>THE TIME CHANGES</span><small>VARUN SAI</small></div>
+        <div class="showcase-page-edge" aria-hidden="true"></div>
+        <div class="showcase-top-edge" aria-hidden="true"></div>
+        <div class="showcase-bottom-edge" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="stage-caption">A PHILOSOPHICAL &amp; MOTIVATIONAL BOOK</p>
+  </div>
+  <div class="hero-scroll-note" aria-hidden="true"><span></span> SCROLL TO EXPLORE</div>
+  <div class="hero-counter" aria-hidden="true">01 <span>/</span> 04</div>
+</section>
   <section class="author-hero-image">
     <img
         src="images/file_0000000024ac82118dfd142f0047bca3.png"
@@ -127,9 +139,11 @@
     <div><div class="brand">VARUN SAI</div><p>Quality defeats quantity.</p></div>
     <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="quotes.html">Quotes</a></li><li><a href="announcements.html">Announcements</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
   </div>
-  <p class="copy">&copy; <span class="year">2026</span> Varun Sai. All rights reserved.</p>
+  <p class="legal-links"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a> · <a href="copyright.html">Copyright Notice</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="data-rights.html">Your Data Rights</a></p>
+<p class="copy">&copy; <span class="year">2026</span> Varun Sai. All rights reserved.</p>
 </footer>
 <script src="script.js"></script>
+<script src="hero-scene.js"></script>
 <script src="config.js"></script>
 <script src="site.js"></script>
 
