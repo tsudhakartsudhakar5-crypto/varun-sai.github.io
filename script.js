@@ -329,7 +329,14 @@ async function initializeHero3D() {
 
 }
 
-initializeHero3D();
+  // Wait until the page has finished loading and the browser is idle before downloading Three.js,
+  // so the 3D scene never competes with the text, cover images and fonts that people see first.
+  function startHero3D() {
+    if ("requestIdleCallback" in window) requestIdleCallback(initializeHero3D, { timeout: 2500 });
+    else setTimeout(initializeHero3D, 400);
+  }
+  if (document.readyState === "complete") startHero3D();
+  else window.addEventListener("load", startHero3D, { once: true });
 
   // Mobile navigation
   const menuButton = document.querySelector(".menu");
