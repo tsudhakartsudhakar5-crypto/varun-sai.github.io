@@ -68,7 +68,7 @@
       <div class="showcase-book" id="bookModel" role="img" aria-label="Three-dimensional paperback edition of The Time Changes by Varun Sai">
         <div class="showcase-pages" aria-hidden="true"></div>
         <div class="showcase-back" aria-hidden="true"></div>
-        <div class="showcase-front"><img src="the-time-changes-front.jpg" alt="Original front cover of The Time Changes by Varun Sai" width="680" height="1000"></div>
+        <div class="showcase-front"><img src="the-time-changes-front.jpg" alt="Original front cover of The Time Changes by Varun Sai" width="680" height="1000" fetchpriority="high" decoding="async"></div>
         <div class="showcase-spine"><span>THE TIME CHANGES</span><small>VARUN SAI</small></div>
         <div class="showcase-page-edge" aria-hidden="true"></div>
         <div class="showcase-top-edge" aria-hidden="true"></div>
@@ -81,11 +81,16 @@
   <div class="hero-counter" aria-hidden="true">01 <span>/</span> 04</div>
 </section>
   <section class="author-hero-image">
-    <img
+    <picture>
+      <source srcset="author-banner.webp" type="image/webp">
+      <img
         src="file_0000000024ac82118dfd142f0047bca3.png"
         alt="Varun Sai - Author"
         class="author-banner"
-    >
+        width="1305" height="1205"
+        loading="lazy" decoding="async"
+      >
+    </picture>
   </section>
 
 <section class="section narrow reveal">
