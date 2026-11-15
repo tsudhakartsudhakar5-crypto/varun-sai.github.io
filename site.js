@@ -9,7 +9,12 @@
     if (token) h.Authorization = "Bearer " + token;
     return h;
   }
-  function req(path, opts) {
+  /* Every request gets a timeout so a stalled connection can never leave a button stuck on "Sending…".
+     Network failures and timeouts become plain-language errors (status 0); server errors keep their status. */
+  function req(path, opts, timeoutMs) {
+    opts = opts || {};
+    var ctl = typeof AbortController === "function" ? new AbortController() : null, timer = null, timedOut = false;
+    if (ctl) { opts.signal = ctl.signal; timer = setTimeout(function () { timedOut = true; ctl.abort(); }, timeoutMs || 20000); }
     return fetch(CFG.url + path, opts).then(function (r) {
       return r.text().then(function (t) {
         var d = null;
@@ -20,6 +25,11 @@
         }
         return { data: d, res: r };
       });
+    }).then(function (x) { clearTimeout(timer); return x; }, function (e) {
+      clearTimeout(timer);
+      if (e && e.status) throw e;
+      var err = new Error(timedOut ? "The server took too long to respond. Please try again." : "Could not reach the server. Check your internet connection and try again.");
+      err.status = 0; throw err;
     });
   }
   var api = {
@@ -305,6 +315,7 @@
       var d = new FormData(form), name = (d.get("name") || "").trim(), msg = (d.get("message") || "").trim(), email = (d.get("email") || "").trim();
       if (!name) return out.appendChild(note("Please enter your name.", "error"));
       if (msg.length < 10) return out.appendChild(note("Please write at least 10 characters.", "error"));
+      if (!d.get("ack")) return out.appendChild(note("Please tick the box to confirm you have read the privacy information and are 18 or older.", "error"));
       if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return out.appendChild(note("That email address does not look right.", "error"));
       var btn = form.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Sending…";
       api.rpc("submit_feedback", { p_name: name, p_message: msg, p_email: email || null, p_website: d.get("website") || null }).then(function (r) {
@@ -380,6 +391,7 @@
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("email"))) errs.push("Please enter a valid email address.");
       if (v("subject").length < 2) errs.push("Please add a subject.");
       if (v("message").length < 10) errs.push("Your message should be at least 10 characters.");
+      if (!d.get("ack")) errs.push("Please tick the box to confirm you have read the privacy information and are 18 or older.");
       if (errs.length) return out.appendChild(note(errs.join(" "), "error"));
       var btn = form.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Sending…";
       api.rpc("submit_contact", { p_name: v("name"), p_email: v("email"), p_subject: v("subject"), p_message: v("message"), p_website: d.get("website") || null }).then(function (r) {
