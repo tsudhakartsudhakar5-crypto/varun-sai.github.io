@@ -336,3 +336,7 @@ body {
 @media(max-width:760px){.hero-cinematic{height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;padding:48px 25px 65px;background:radial-gradient(ellipse at 50% 72%,#211a10 0%,#100e0b 37%,#090909 78%)}.hero-cinematic .hero-copy{width:100%}.cinematic-name{font-size:clamp(4.2rem,17vw,6rem);margin:24px 0 16px}.cinematic-rule{margin:23px 0 18px}.cinematic-book-title{font-size:2.5rem}.cinematic-stage{height:470px;min-height:470px;margin-top:8px}.showcase-book{--bw:205px;--bh:320px;--depth:27px}.stage-caption{bottom:2%}.hero-scroll-note{display:none}.hero-counter{right:24px;bottom:19px}.cinematic-actions{flex-direction:row}.cinematic-actions .btn{width:auto}.book-shadow{bottom:9%}}
 @media(max-width:420px){.cinematic-actions{flex-direction:column;align-items:stretch}.cinematic-actions .btn{width:100%}.cinematic-stage{height:430px;min-height:430px}}
 @media(prefers-reduced-motion:reduce){.hero-cinematic .hero-copy,.book-float,.book-shadow{animation:none!important}.showcase-book{transition:none!important}}
+
+/* DPDP update */
+.ack{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px;line-height:1.5;color:var(--ivory)}
+.ack input{margin-top:5px;flex:none;width:auto}
