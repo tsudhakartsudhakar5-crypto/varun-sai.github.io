@@ -20,40 +20,15 @@
     return authReq("refresh_token", { refresh_token: session.refresh_token }).then(function (s) { save(s); return s.access_token; })
       .catch(function (e) { save(null); showLogin("Your session expired. Please sign in again."); throw e; });
   }
-  /* Requests in flight are counted so a save form can be locked until its request finishes
-     (prevents duplicate articles/polls/quotes from a double tap). A 401 means the session is no longer valid. */
-  var pending = 0;
-  function unlockForms() {
-    if (pending) return;
-    Array.prototype.forEach.call(document.querySelectorAll("form[data-busy]"), function (f) {
-      f.removeAttribute("data-busy");
-      var b = f.querySelector("button[type=submit]"); if (b) b.disabled = false;
-    });
-  }
-  function track(p) {
-    pending++;
-    function done() { pending = Math.max(0, pending - 1); if (!pending) setTimeout(unlockForms, 400); }
-    return p.then(function (v) { done(); return v; }, function (e) {
-      done();
-      if (e && e.status === 401 && session) { save(null); showLogin("Your session has expired. Please sign in again."); e.message = "Your session has expired. Please sign in again."; }
-      throw e;
-    });
-  }
-  document.addEventListener("submit", function (e) {
-    var f = e.target; if (!f || f.tagName !== "FORM" || f.hasAttribute("data-login")) return;
-    if (f.hasAttribute("data-busy")) { e.preventDefault(); e.stopImmediatePropagation(); return; }
-    /* lock immediately; if the form's own checks stop it before any request is made, release it right away */
-    f.setAttribute("data-busy", "1"); var b = f.querySelector("button[type=submit]"); if (b) b.disabled = true;
-    setTimeout(function () { if (!pending) unlockForms(); }, 0);
-  }, true);
   var A = {
-    select: function (t, q) { return track(tok().then(function (k) { return api.select(t, q, k); })); },
-    count: function (t, q) { return track(tok().then(function (k) { return api.count(t, q, k); })); },
-    insert: function (t, r) { return track(tok().then(function (k) { return api.insert(t, r, k); })); },
-    update: function (t, f, p) { return track(tok().then(function (k) { return api.update(t, f, p, k); })); },
-    remove: function (t, f) { return track(tok().then(function (k) { return api.remove(t, f, k); })); },
-    rpc: function (n, a) { return track(tok().then(function (k) { return api.rpc(n, a, k); })); }
+    select: function (t, q) { return tok().then(function (k) { return api.select(t, q, k); }); },
+    count: function (t, q) { return tok().then(function (k) { return api.count(t, q, k); }); },
+    insert: function (t, r) { return tok().then(function (k) { return api.insert(t, r, k); }); },
+    update: function (t, f, p) { return tok().then(function (k) { return api.update(t, f, p, k); }); },
+    remove: function (t, f) { return tok().then(function (k) { return api.remove(t, f, k); }); },
+    rpc: function (n, a) { return tok().then(function (k) { return api.rpc(n, a, k); }); }
   };
+  window.VSAdminApi = A; // used by admin-notifications.js (notification bell)
 
   /* ---------- UI helpers ---------- */
   var toastBox;
@@ -62,7 +37,7 @@
     var t = h("div", { class: "toast " + (kind || "ok"), text: msg }); toastBox.appendChild(t);
     setTimeout(function () { t.remove(); }, kind === "error" ? 6000 : 3000);
   }
-  function fail(e) { toast(e && e.status === 403 ? "The database refused this action: your account does not have permission." : (e && e.message) || "Something went wrong.", "error"); }
+  function fail(e) { toast((e && e.message) || "Something went wrong.", "error"); }
   function field(label, input, hint) { return h("label", { class: "fld" }, h("span", { text: label }), input, hint ? h("small", { text: hint }) : null); }
   function inp(name, type, val, attrs) { return h("input", Object.assign({ name: name, type: type || "text", value: val == null ? "" : val }, attrs || {})); }
   function area(name, val, rows) { var a = h("textarea", { name: name, rows: rows || 5 }); a.value = val == null ? "" : val; return a; }
@@ -82,7 +57,7 @@
   function showLogin(msg) {
     clear(root);
     var out = h("div", { "aria-live": "polite" }); if (msg) out.appendChild(S.note(msg, "error"));
-    var form = h("form", { class: "admin-card", novalidate: true, "data-login": "1" },
+    var form = h("form", { class: "admin-card", novalidate: true },
       h("h1", { text: "Author sign in" }),
       field("Email", inp("email", "email", "", { autocomplete: "username", required: true })),
       field("Password", inp("password", "password", "", { autocomplete: "current-password", required: true })),
@@ -178,15 +153,13 @@
       slug.addEventListener("input", function () { slug.dataset.touched = "1"; });
       var file = h("input", { type: "file", accept: "image/jpeg,image/png,image/webp,image/gif" }), upMsg = h("small", { class: "muted" });
       function upload(mode) {
-        if (upMsg.textContent === "Uploading…") return;
         var fl = file.files[0]; if (!fl) return toast("Choose an image first.", "error");
-        if (["image/jpeg", "image/png", "image/webp", "image/gif"].indexOf(fl.type) < 0) return toast("Only JPG, PNG, WebP or GIF images can be uploaded.", "error");
         if (fl.size > 5 * 1024 * 1024) return toast("Image is larger than 5 MB.", "error");
         var name = Date.now() + "-" + fl.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-");
         upMsg.textContent = "Uploading…";
         tok().then(function (k) {
           var hd = api.hdr(k); hd["Content-Type"] = fl.type; hd["x-upsert"] = "false";
-          return api.raw("/storage/v1/object/article-images/" + name, { method: "POST", headers: hd, body: fl }, 120000);
+          return api.raw("/storage/v1/object/article-images/" + name, { method: "POST", headers: hd, body: fl });
         }).then(function () {
           var url = CFG.url + "/storage/v1/object/public/article-images/" + name;
           if (mode === "cover") cover.value = url; else content.value += (content.value ? "\n\n" : "") + "![" + (fl.name.replace(/\.[^.]+$/, "")) + "](" + url + ")";
@@ -370,12 +343,7 @@
   function settings() {
     setPanel(h("h2", { text: "Settings" }), h("div", { class: "admin-card" }, h("p", null, "Signed in as ", h("strong", { text: session.email })),
       h("p", { class: "muted", text: "To change your password or sign-in settings, use the Authentication section of your Supabase dashboard (author project)." }),
-      h("div", { class: "btn-row" }, btn("Sign out", signOut, "danger"), h("a", { class: "btn small secondary", href: "index.html", text: "View public website" }))));
-  }
-
-  function signOut() {
-    var s = session; save(null); showLogin();
-    if (s && s.access_token) { try { fetch(CFG.url + "/auth/v1/logout?scope=local", { method: "POST", headers: api.hdr(s.access_token) }).catch(function () {}); } catch (e) {} }
+      h("div", { class: "btn-row" }, btn("Sign out", function () { save(null); showLogin(); }, "danger"), h("a", { class: "btn small secondary", href: "index.html", text: "View public website" }))));
   }
 
   /* ---------- start ---------- */
