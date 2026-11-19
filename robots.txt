@@ -1,4 +1,21 @@
+# Official website of author Varun Sai
 User-agent: *
 Allow: /
 
-Sitemap: https://tsudhakartsudhakar5-crypto.github.io/varun-sai.github.io/sitemap.xml
+# AI search and answer crawlers (explicitly welcome)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://varunsai.vercel.app/sitemap.xml
