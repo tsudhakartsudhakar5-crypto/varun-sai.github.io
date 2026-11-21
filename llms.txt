@@ -1,6 +1,6 @@
-# Varun Sai — Official Author Website
+# Thipparapu Varun Sai (Varun Sai) — Official Author Website
 
-> Varun Sai is a young author. This is his official website. He wrote The Time Changes, a philosophical and motivational book, and Learn It. Build It. Master It., a beginner's guide to learning technology and building real projects with AI. His writing philosophy: "Quality defeats quantity."
+> Thipparapu Varun Sai, publicly known as Varun Sai, is a young independent author from Telangana, India. This is his official website. He wrote The Time Changes, a philosophical and motivational book (104 pages, 21 chapters and an epilogue, published October 2026), and Learn It. Build It. Master It., a beginner's guide to learning technology and building real projects with AI. He also writes philosophical fiction and poetry, including Telugu verse. His writing philosophy: "Quality defeats quantity."
 
 Official website: https://varunsai.vercel.app/
 Official bookstore: https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/
@@ -12,8 +12,9 @@ Public contact: https://varunsai.vercel.app/contact.html
 - [All books](https://varunsai.vercel.app/books.html)
 
 ## About the author
-- [About Varun Sai](https://varunsai.vercel.app/about.html): Biography, interests and writing philosophy.
+- [About Thipparapu Varun Sai](https://varunsai.vercel.app/about.html): Biography, interests (including cricket and chess) and writing philosophy.
 - [My Journey](https://varunsai.vercel.app/journey.html)
+- [Achievements](https://varunsai.vercel.app/achievements.html)
 
 ## Free reading
 - [The Unknown Signal](https://varunsai.vercel.app/unknown-signal.html): A fairy tale by Varun Sai, free for everyone.
