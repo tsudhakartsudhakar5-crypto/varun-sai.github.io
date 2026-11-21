@@ -1,0 +1,21 @@
+/* Comfort and convenience layer. Extra styles only; style.css is untouched. */
+html{-webkit-text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:rgba(200,164,95,.18)}
+
+/* Compact mobile and tablet menu: two columns, nothing removed */
+@media(max-width:1180px){
+  .header nav{display:none;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:0;align-content:start;max-height:calc(100svh - 72px);overflow-y:auto;overscroll-behavior:contain;padding:6px 5vw 14px}
+  .header nav.open{display:grid}
+  .header nav a{display:flex;align-items:center;min-height:46px;padding:0;font-size:.74rem;letter-spacing:.09em}
+  .header nav a:last-child{grid-column:1/-1}
+}
+
+/* Easier taps in the footer */
+@media(pointer:coarse){
+  .footer li a{display:inline-block;padding:6px 0}
+}
+
+/* Back to top button (added by comfort.js) */
+.to-top{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:15;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:rgba(22,22,22,.94);color:var(--gold);font-size:1.15rem;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+@media(prefers-reduced-motion:reduce){.to-top{transition:none}}
