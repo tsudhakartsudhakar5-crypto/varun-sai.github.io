@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter | Varun Sai</title>
+<meta name="description" content="Subscribe to occasional emails about new writing, books and announcements from Varun Sai.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Varun Sai">
+<meta name="theme-color" content="#161616">
+<link rel="canonical" href="https://varunsai.vercel.app/newsletter.html">
+<meta property="og:title" content="Newsletter | Varun Sai">
+<meta property="og:description" content="Subscribe to occasional emails about new writing, books and announcements from Varun Sai.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Varun Sai">
+<meta property="og:url" content="https://varunsai.vercel.app/newsletter.html">
+<meta property="og:image" content="https://varunsai.vercel.app/book-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Newsletter | Varun Sai">
+<meta name="twitter:description" content="Subscribe to occasional emails about new writing, books and announcements from Varun Sai.">
+<meta name="twitter:image" content="https://varunsai.vercel.app/book-cover.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,500&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="comfort.css">
+</head>
+<body data-page="contact">
+<a class="skip" href="#main">Skip to content</a>
+<header class="header">
+  <a href="index.html" class="logo">VARUN SAI</a>
+  <button class="menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+  <nav id="site-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="journey.html">My Journey</a>
+    <a href="books.html">Books</a>
+    <a href="thoughts.html">Thoughts</a>
+    <a href="readers-corner.html">Reader's Corner</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="media.html">Media &amp; Press</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    
+  </nav>
+</header>
+<main id="main">
+<div class="page-head"><p class="eyebrow">Newsletter</p><h1>Join the newsletter</h1><hr class="rule"><p class="lead">Occasional emails about new writing, books and announcements from Varun Sai.</p></div>
+<section class="section narrow reveal" style="padding-top:20px">
+  <p class="notice">We collect only your email address, and send a confirmation email first. You can unsubscribe at any time using the link in every email. If you are under 18, please ask a parent or guardian to sign up for you. Read the <a href="privacy.html">Privacy Policy</a> and <a href="data-rights.html">Your Data Rights</a>.</p>
+  <form id="newsletter-form" class="form-card" novalidate>
+    <label class="fld"><span>Email</span><input name="email" type="email" maxlength="200" autocomplete="email" required></label>
+    <label style="display:flex;gap:12px;align-items:flex-start;margin:6px 0 14px"><input name="consent" type="checkbox" required style="width:auto;margin-top:5px"><span>I agree to receive occasional emails from Varun Sai about new writing and books, and to my email address being processed by Brevo, the email service used to send them.</span></label>
+    <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn primary" type="submit">Subscribe</button>
+  </form>
+  <div id="newsletter-msg" aria-live="polite" style="margin-top:16px"></div>
+  <noscript><p class="notice">This page needs JavaScript to work.</p></noscript>
+</section>
+<script src="config.js"></script>
+<script>
+(function () {
+  var form = document.getElementById("newsletter-form"), msg = document.getElementById("newsletter-msg");
+  function say(text, ok) { msg.className = "notice"; msg.textContent = text; msg.style.borderColor = ok ? "" : "#b55"; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = form.elements, email = f.email.value.trim(), b = form.querySelector("button");
+    if (!email || !f.consent.checked) return say("Please enter your email and tick the consent box.", false);
+    b.disabled = true; b.textContent = "Sending…";
+    fetch(window.SITE_CONFIG.url + "/functions/v1/newsletter-subscribe", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, consent: f.consent.checked, website: f.website.value })
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        say(x.d.message || (x.ok ? "Please check your inbox." : "Something went wrong. Please try again later."), x.ok);
+        if (x.ok) form.reset();
+      }).catch(function () { say("Could not connect. Please try again later.", false); })
+      .then(function () { b.disabled = false; b.textContent = "Subscribe"; });
+  });
+})();
+</script>
+</main>
+<footer class="footer">
+  <div class="inner">
+    <div><div class="brand">VARUN SAI</div><p>Quality defeats quantity.</p></div>
+    <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="journey.html">My Journey</a></li><li><a href="books.html">Books</a></li><li><a href="thoughts.html">Thoughts</a></li><li><a href="readers-corner.html">Reader's Corner</a></li><li><a href="achievements.html">Achievements</a></li><li><a href="media.html">Media &amp; Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="quotes.html">Quotes</a></li><li><a href="announcements.html">Announcements</a></li><li><a href="unknown-signal.html">Free Story: The Unknown Signal</a></li><li><a href="https://tsudhakartsudhakar5-crypto.github.io/varun-sai-bookstore/" target="_blank" rel="noopener noreferrer">VARUN SAI BOOKSTORE</a></li></ul>
+  </div>
+  <p class="legal-links"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a> · <a href="copyright.html">Copyright Notice</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="data-rights.html">Your Data Rights</a></p>
+<p class="copy">&copy; <span class="year">2026</span> Varun Sai. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
+<script src="comfort.js" defer></script>
+<script src="config.js"></script>
+<script src="site.js"></script>
+
+</body>
+</html>
