@@ -352,6 +352,14 @@
     var a = h("a", { href: URL.createObjectURL(new Blob([text], { type: "text/csv" })), download: name });
     document.body.appendChild(a); a.click(); a.remove();
   }
+  function showCheck() {
+    nl("selfcheck").then(function (r) {
+      setPanel(h("div", { class: "admin-card" }, h("h2", { text: "Newsletter setup check" }),
+        h("ul", { class: "admin-list" }, r.checks.map(function (c) {
+          return h("li", null, h("span", { class: "tag " + (c.ok ? "gold" : ""), text: c.ok ? "OK" : "Fix" }), h("div", { class: "grow" }, h("strong", { text: c.name }), c.note ? h("small", { text: c.note }) : null));
+        })), btn("Back", subscribers)));
+    }).catch(fail);
+  }
   function subscribers() {
     Promise.all([nl("stats"), nl("list")]).then(function (r) {
       var st = r[0], rows = r[1].rows || [];
@@ -367,6 +375,7 @@
       setPanel(h("div", { class: "admin-bar" }, h("h2", { text: "Subscribers" }),
         h("div", { class: "btn-row tight" },
           btn("Sync with Brevo", function () { nl("sync").then(function (x) { toast("Synced: " + x.confirmed + " newly confirmed, " + x.unsubscribed + " unsubscribed."); subscribers(); }).catch(fail); }),
+          btn("Check setup", showCheck),
           btn("Export confirmed (CSV)", function () { nl("export").then(function (x) { saveFile("subscribers.csv", x.csv); }).catch(fail); }))),
         h("div", { class: "stat-grid" }, stats.map(function (s) { return h("div", { class: "stat" }, h("strong", { text: String(st[s[1]] || 0) }), h("span", { text: s[0] })); })),
         h("p", { class: "muted" }, "Write and send newsletters from ", h("a", { href: "https://app.brevo.com", target: "_blank", rel: "noopener noreferrer", text: "Brevo" }), ". It adds the unsubscribe link automatically. Use “Sync with Brevo” afterwards to update statuses."),
