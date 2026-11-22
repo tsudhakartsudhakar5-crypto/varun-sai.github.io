@@ -339,7 +339,43 @@
       })) : h("div", { class: "empty" }, h("strong", { text: "No messages yet" })));
     }).catch(fail);
   }
-  function subscribers() { setPanel(h("h2", { text: "Subscribers" }), h("div", { class: "empty" }, h("strong", { text: "Newsletter is not set up yet" }), "A newsletter needs an email-sending service for verification and unsubscribe links. It will be added only once a secure, affordable option is chosen. No fake sign-up form is shown on the public site.")); }
+  /* ---------- subscribers (newsletter via Brevo; all work happens in the admin-only Edge Function) ---------- */
+  function nl(action, extra) {
+    return tok().then(function (k) {
+      return api.raw("/functions/v1/newsletter-admin", { method: "POST", headers: api.hdr(k), body: JSON.stringify(Object.assign({ action: action }, extra || {})) });
+    }).then(function (x) { return x.data; });
+  }
+  function notSetUp() {
+    return h("div", { class: "empty" }, h("strong", { text: "Newsletter is not set up yet" }), "A newsletter needs an email-sending service for verification and unsubscribe links. It will be added only once a secure, affordable option is chosen. No fake sign-up form is shown on the public site.");
+  }
+  function saveFile(name, text) {
+    var a = h("a", { href: URL.createObjectURL(new Blob([text], { type: "text/csv" })), download: name });
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function subscribers() {
+    Promise.all([nl("stats"), nl("list")]).then(function (r) {
+      var st = r[0], rows = r[1].rows || [];
+      var stats = [["Confirmed", "confirmed"], ["Waiting to confirm", "pending"], ["Unsubscribed", "unsubscribed"], ["Bounced", "bounced"]];
+      var list = h("ul", { class: "admin-list" }, rows.map(function (s) {
+        return h("li", null, h("div", { class: "grow" }, h("strong", { text: s.email }), h("small", { text: s.confirmed_at ? "Confirmed " + fmt(s.confirmed_at) : "Requested " + fmt(s.consent_requested_at) })),
+          h("span", { class: "tag " + (s.status === "confirmed" ? "gold" : ""), text: s.status }),
+          btn("Erase", function () {
+            if (!window.confirm("Erase " + s.email + " from the newsletter list and from Brevo? This cannot be undone.")) return;
+            nl("erase", { id: s.id }).then(function () { toast("Subscriber erased."); subscribers(); }).catch(fail);
+          }, "danger"));
+      }));
+      setPanel(h("div", { class: "admin-bar" }, h("h2", { text: "Subscribers" }),
+        h("div", { class: "btn-row tight" },
+          btn("Sync with Brevo", function () { nl("sync").then(function (x) { toast("Synced: " + x.confirmed + " newly confirmed, " + x.unsubscribed + " unsubscribed."); subscribers(); }).catch(fail); }),
+          btn("Export confirmed (CSV)", function () { nl("export").then(function (x) { saveFile("subscribers.csv", x.csv); }).catch(fail); }))),
+        h("div", { class: "stat-grid" }, stats.map(function (s) { return h("div", { class: "stat" }, h("strong", { text: String(st[s[1]] || 0) }), h("span", { text: s[0] })); })),
+        h("p", { class: "muted" }, "Write and send newsletters from ", h("a", { href: "https://app.brevo.com", target: "_blank", rel: "noopener noreferrer", text: "Brevo" }), ". It adds the unsubscribe link automatically. Use “Sync with Brevo” afterwards to update statuses."),
+        rows.length ? list : h("div", { class: "empty" }, h("strong", { text: "No subscribers yet" }), "People appear here after they sign up and confirm by email."));
+    }).catch(function (e) {
+      if (e && e.status === 404) return setPanel(h("h2", { text: "Subscribers" }), notSetUp());
+      setPanel(h("h2", { text: "Subscribers" }), h("div", { class: "empty" }, h("strong", { text: "Could not load subscribers" }), (e && e.message) || "Please try again."));
+    });
+  }
   function settings() {
     setPanel(h("h2", { text: "Settings" }), h("div", { class: "admin-card" }, h("p", null, "Signed in as ", h("strong", { text: session.email })),
       h("p", { class: "muted", text: "To change your password or sign-in settings, use the Authentication section of your Supabase dashboard (author project)." }),
